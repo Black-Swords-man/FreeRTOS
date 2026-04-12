@@ -11,6 +11,14 @@ Each exercise is documented with:
 
 ---
 
+## Hardware/Software Requirements
+- ESP32‑WROOM‑DA Module
+- Arduino IDE
+- FreeRTOS (ESP32 Arduino core)
+- Serial Monitor for debugging
+
+---
+
 ## Core Concepts Covered
 - **Task Creation** (`xTaskCreate`, `xTaskCreatePinnedToCore`)
 - **Task Scheduling & Delays** (`vTaskDelay`, `pdMS_TO_TICKS`)
@@ -37,14 +45,6 @@ FreeRTOS/
     serial_output.png
   (future exercises will be added here)
 ```
-
----
-
-## Hardware/Software Requirements
-- ESP32‑WROOM‑DA Module
-- Arduino IDE
-- FreeRTOS (ESP32 Arduino core)
-- Serial Monitor for debugging
 
 ---
 
