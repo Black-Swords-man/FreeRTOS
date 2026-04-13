@@ -20,12 +20,17 @@ Each exercise is documented with:
 ---
 
 ## Core Concepts Covered
-- **Task Creation** (`xTaskCreate`, `xTaskCreatePinnedToCore`)
-- **Task Scheduling & Delays** (`vTaskDelay`, `pdMS_TO_TICKS`)
-- **Multitasking & Priorities**
-- **Dual‑Core Execution** (ESP32 specific)
-- **Stack Monitoring** (`uxTaskGetStackHighWaterMark`)
-- **Synchronization** (Mutexes, Queues, Logging tasks – upcoming)
+- **Task Management**
+  - Task creation (`xTaskCreate`, `xTaskCreatePinnedToCore`)
+  - Task scheduling and delays (`vTaskDelay`, `pdMS_TO_TICKS`)
+  - Task priorities and dual‑core execution (ESP32 specific)
+  - Stack monitoring (`uxTaskGetStackHighWaterMark`)
+
+- **Inter‑Task Communication**
+  - Queues for passing simple data (integers) between tasks
+  - Queues for passing structured data (e.g., sensor structs)
+  - Safe communication without global variables
+  - Foundation for synchronization and resource sharing
 
 ---
 
@@ -33,14 +38,22 @@ Each exercise is documented with:
 ```
 FreeRTOS/
   01_Single_Task/
-    code.ino
+    01_Single_Task.ino
     README.md
   02_Multi_Tasking/
-    code.ino
+    02_Multi_Tasking.ino
     README.md
     serial_output.png
   03_Dual_Core/
-    code.ino
+    03_Dual_Core.ino
+    README.md
+    serial_output.png
+  04_Queue/
+    04_Queue.ino
+    README.md
+    serial_output.png
+  05_Queue_Struct/
+    05_Queue_Struct.ino
     README.md
     serial_output.png
   (future exercises will be added here)
