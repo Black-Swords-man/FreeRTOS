@@ -11,6 +11,8 @@ void Core_1(void *pvParameters)
   }
 }
 
+/*-----------------------------------------------------------*/
+
 void Core_2(void *pvParameters)
 {
   while(1)
@@ -20,6 +22,8 @@ void Core_2(void *pvParameters)
     vTaskDelay(pdMS_TO_TICKS(1000));
   }
 }
+
+/*-----------------------------------------------------------*/
 
 void setup() {
   Serial.begin(115200);

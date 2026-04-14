@@ -29,7 +29,7 @@ typedef struct
 
 char buffer[64];
 
-// Producer Task: generates sensor data and sends to queue
+/* Producer Task: generates sensor data and sends to queue */
 void producerTask(void *pvParameters) 
 {
   sensor_t producerData;
@@ -48,7 +48,9 @@ void producerTask(void *pvParameters)
   }
 }
 
-// Consumer Task: receives sensor data from queue and prints
+/*-----------------------------------------------------------*/
+
+/* Consumer Task: receives sensor data from queue and prints */
 void consumerTask(void *pvParameters) 
 {
   sensor_t consumerData;
@@ -61,6 +63,8 @@ void consumerTask(void *pvParameters)
     }
   }
 }
+
+/*-----------------------------------------------------------*/
 
 void setup() {
   Serial.begin(115200);

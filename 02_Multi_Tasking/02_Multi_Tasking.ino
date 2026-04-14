@@ -1,4 +1,5 @@
 const int led_pin = 16;
+
 TaskHandle_t taskAHandle;
 TaskHandle_t taskBHandle;
 
@@ -17,6 +18,8 @@ void led_task(void *pvParameters)
   }
 }
 
+/*-----------------------------------------------------------*/
+
 void serial_print(void *pvParameters)
 {
   while(1)
@@ -25,6 +28,8 @@ void serial_print(void *pvParameters)
     vTaskDelay(pdMS_TO_TICKS(500));
   }
 }
+
+/*-----------------------------------------------------------*/
 
 void setup() {
   Serial.begin(115200);

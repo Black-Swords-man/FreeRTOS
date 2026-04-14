@@ -36,6 +36,8 @@ void senderTask(void *pvParameters)
   }
 }
 
+/*-----------------------------------------------------------*/
+
 void receiverTask(void *pvParameters)
 {
   int received = 0;
@@ -49,10 +51,12 @@ void receiverTask(void *pvParameters)
   }
 }
 
+/*-----------------------------------------------------------*/
+
 void setup() {
   Serial.begin(115200);
 
-  // Create a queue to hold 5 integer values
+  /* Create a queue to hold 5 integer values */
   queue1 = xQueueCreate(5, sizeof(int));
 
   if (queue1 == NULL)
@@ -66,5 +70,5 @@ void setup() {
 }
 
 void loop() {
-  // Empty: FreeRTOS scheduler runs tasks
+  /* Empty: FreeRTOS scheduler runs tasks */
 }
