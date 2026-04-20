@@ -32,6 +32,7 @@ typedef struct
 {
   int data;
   unsigned long timeStamp;
+  bool valid = false;
 } sensorData_t;
 
 /*-----------------------------------------------------------
@@ -55,6 +56,7 @@ void sensorRead(void *pvParameters)
     sensorData_t sensor;
     sensor.data = random(10,20);
     sensor.timeStamp = millis();
+    sensor.valid = true;
 
     if ( xQueueSend(dataQueue, &sensor, portMAX_DELAY) == pdTRUE )
     {
@@ -78,7 +80,7 @@ void loggerTask(void *pvParameters)
     ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
     sensorData_t receive;
-    if( xQueueReceive(dataQueue, &receive, 0) == pdTRUE )
+    if( xQueueReceive(dataQueue, &receive, 0) == pdTRUE && receive.valid == true )
     {
       File logFile = SPIFFS.open("/log.txt", FILE_APPEND);
       if (logFile)
@@ -111,7 +113,10 @@ void printTask(void *pvParameters)
       for(int i = 0; i < HISTORY_SIZE; i++)
       {
         int position = ( index + i ) % HISTORY_SIZE;
-        Serial.printf("[Printer] Sensor : %d, Timestamp : %lu ms\n", history[position].data, history[position].timeStamp);
+        if ( history[position].valid == true )
+        {
+          Serial.printf("[Printer] Sensor : %d, Timestamp : %lu ms\n", history[position].data, history[position].timeStamp);
+        }
       }
       Serial.println("||---------------Log Ended----------------||");
       xSemaphoreGive(serialMutex);
